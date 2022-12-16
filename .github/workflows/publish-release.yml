@@ -10,8 +10,6 @@ jobs:
   call-final-workflow-in-bundler-repo:
     if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch' }}
     uses: cloud-py-api/py_bundler/.github/workflows/generate-binaries-final.yml@main
-    with:
-      bin_prefix: demo_
 
   # this probably will be your custom step, modify(rewrite from scratch) it as you wish.
   draft_release:
