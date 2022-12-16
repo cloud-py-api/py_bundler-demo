@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<info xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
+	<id>demo</id>
+	<name>PyAppDemo</name>
+	<summary>Summary</summary>
+	<description>
+	<![CDATA[
+
+This is not a full file. Action will take **<id>demo</id>** from this repo and use it as a binary prefix.
+
+	]]>
+	</description>
+</info>

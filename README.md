@@ -16,8 +16,6 @@ Invokes `Nuitka` to build standalone binary.
 
 Publishes(or updates) GA release with binary files using the latest tags from repo.
 
-You can specify `bin_prefix` in the yml if you like, or remove it.
-
 ### requirements.txt
 
 This file is used in `generate-binaries.yml` step, it installs all packages specified here.
