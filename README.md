@@ -4,21 +4,23 @@ This is a basic example with only the python part, without the php part.
 
 The full application skeleton will be published later.
 
+THIS DESCRIPTION IS IN DEVELOPMENT, and may be wrong.
+
 ### workflows
 
-- `generate-binaries.yml`
+- `generate-binaries-1.yml`
 
 Installing from `requirements.txt` packages and caching docker layers.
 
-- `publish-release.yml`
+- `generate-binaries-2.yml`
 
-Invokes `Nuitka` to build standalone binary.
+Invokes `Nuitka` to build standalone binaries, and store them as an artifacts into the workflow result.
 
-Publishes(or updates) GA release with binary files using the latest tags from repo.
+After that in your release action file, call `dawidd6/action-download-artifact@v2` to get them.
 
 ### requirements.txt
 
-This file is used in `generate-binaries.yml` step, it installs all packages specified here.
+This file is used in `generate-binaries-1.yml` step, it installs all packages specified here.
 
 Specifying requirements in `TOML` or `cfg` is not supported, and in near future will not be.
 
