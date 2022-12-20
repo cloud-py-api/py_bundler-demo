@@ -22,6 +22,9 @@ if __name__ == "__main__":
     group.add_argument(
         "--info", dest="bundle_info", action="store_true", help="Print information about bundled packages."
     )
+    group.add_argument(
+        "--test", dest="test", type=str, action="append", help="Performs test."
+    )
     args = parser.parse_args()
     if args.bundle_info:
         # inside this command it is recommended to import and print all top level libraries used by your app
@@ -33,6 +36,8 @@ if __name__ == "__main__":
             sys.exit(1)
         # here goes your code ->
         log.error("will implement soon here FS example :)")
+    elif args.test:
+        print("Yo! ", args.test)
     else:
         parser.print_help()
     sys.exit(0)

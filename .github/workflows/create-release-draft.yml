@@ -1,0 +1,43 @@
+name: Create Release
+
+on:
+  workflow_dispatch:
+
+# this probably will be your custom step, modify(rewrite from scratch) it as you wish, just take from here one step.
+jobs:
+  build_app:
+    runs-on: ubuntu-latest
+    name: Build and create release
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Download artifacts
+        id: download-artifact
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          workflow: generate-binaries-2.yml
+          workflow_conclusion: ""
+
+      # here binaries for your app lives in "cp_binaries/*" path, just attach them to yor release.
+      # here comes your code for publishing usual nextcloud app....
+      - name: List binaries
+        run: ls -la cp_binaries
+
+      - name: Get Last Tag
+        id: last_tag
+        uses: WyriHaximus/github-action-get-previous-tag@v1
+        with:
+          fallback: latest
+
+      - name: Create release draft
+        uses: ncipollo/release-action@v1.12.0
+        with:
+          allowUpdates: true
+          tag: ${{ steps.last_tag.outputs.tag }}
+          commit: ${{ github.ref }}
+          draft: false
+          artifacts: cp_binaries/*
+          artifactErrorsFailBuild: true
